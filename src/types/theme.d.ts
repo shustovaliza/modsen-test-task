@@ -3,9 +3,17 @@ import 'styled-components';
 declare module 'styled-components' {
   export interface DefaultTheme {
     colors: {
-      backgroundColor: '#FAFAFA';
-      textBlack: '#393939';
-      textOrange: '#E0A449';
+      backgroundMainColor: '#FAFAFA';
+      white: '#FFFFFF';
+      black: '#393939';
+      orange: '#F17900';
+      lightOrange: '#E0A449';
+    };
+    media: {
+      xs: `(max-width: 400px)`;
+      sm: `(max-width: 600px)`;
+      md: `(max-width: 900px)`;
+      lg: `(max-width: 1200px)`;
     };
   }
 }

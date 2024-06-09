@@ -1,7 +1,7 @@
-import { AppRouter } from '@/router/router';
-import { GlobalStyle } from '@/styles/GlobalStyle';
+import { AppRouter } from '@/router/Router';
+import { GlobalStyle } from '@/styles/globalStyle';
 import { ThemeProvider } from 'styled-components';
-import { theme } from '@/styles/Theme';
+import { theme } from '@/styles/theme';
 
 export const App = () => {
   return (
