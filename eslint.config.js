@@ -46,7 +46,6 @@ export default tseslint.config(
       ],
       'prefer-const': 'error',
       '@typescript-eslint/no-unused-vars': 'error',
-      'react-hooks/exhaustive-deps': 'warn',
       'react-hooks/rules-of-hooks': 'error',
     },
   },

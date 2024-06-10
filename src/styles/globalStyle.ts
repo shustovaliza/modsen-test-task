@@ -36,5 +36,6 @@ export const GlobalStyle = createGlobalStyle`
 
   button {
     cursor: pointer;
+    font-family: Lexend Deca;
   }
 `;
