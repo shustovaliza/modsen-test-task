@@ -1,5 +1,5 @@
 import { MainLayout } from '@/layouts/MainLayout';
-import { MainPage } from '@/pages/main';
+import { MainPage } from '@/pages/Main';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 const routerSchema = createBrowserRouter([

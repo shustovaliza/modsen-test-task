@@ -12,7 +12,7 @@ export const MainLayoutContainer = styled.div`
     max-width: 1330px;
     width: 100%;
     margin: 0px auto;
-    padding: 0px 50px;
+    padding: 120px 50px;
     box-sizing: border-box;
   }
 `;

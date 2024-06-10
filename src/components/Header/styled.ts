@@ -42,6 +42,10 @@ export const BurgerMenuButton = styled.button`
   z-index: 1;
   background: inherit;
 
+  svg {
+    fill: ${(props) => props.theme.colors.lightOrange};
+  }
+
   @media ${(props) => props.theme.media.sm} {
     display: block;
   }

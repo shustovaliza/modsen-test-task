@@ -7,6 +7,7 @@ export const theme: DefaultTheme = {
     black: '#393939',
     orange: '#F17900',
     lightOrange: '#E0A449',
+    error: '#ff5154',
   },
   media: {
     xs: `(max-width: 400px)`,

@@ -44,10 +44,4 @@ export const MenuWrap = styled.nav`
       transform: translateX(0);
     }
   }
-
-  @media ${(props) => props.theme.media.xs} {
-    a {
-      font-size: 14px;
-    }
-  }
 `;
