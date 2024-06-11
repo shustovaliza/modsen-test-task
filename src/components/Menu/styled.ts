@@ -21,6 +21,10 @@ export const MenuWrap = styled.nav`
     &:hover {
       color: ${(props) => props.theme.colors.lightOrange};
     }
+
+    svg {
+      stroke: ${(props) => props.theme.colors.lightOrange};
+    }
   }
 
   @media ${(props) => props.theme.media.sm} {

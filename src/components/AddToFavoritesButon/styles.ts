@@ -16,4 +16,8 @@ export const AddToFavoritesBtnWrap = styled.button<{ $isFavorite: boolean }>`
   &:hover {
     background: ${(props) => props.theme.colors.orangeTransparent};
   }
+
+  svg {
+    stroke: ${(props) => props.theme.colors.orange};
+  }
 `;

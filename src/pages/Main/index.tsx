@@ -4,8 +4,6 @@ import {
   ArtworksWrapExtra,
   BlocksWrap,
   GalleryBlockWrap,
-  H2Wrap,
-  MainPageBlock,
   MainPageContainer,
   PaginationWrap,
 } from './styled';
@@ -19,6 +17,7 @@ import { Pagination } from '@/components/Pagination';
 import { Loader } from '@/components/Loader';
 import { FetchError } from '@/components/FetchError';
 import { ArtworkCard } from '@/components/ArtworkCard';
+import { H2Wrap, PageBlock } from '@/styles/sharedStyles';
 
 export const MainPage = () => {
   const [searchParameters, setSearchParameters] = useSearchParams();
@@ -55,7 +54,7 @@ export const MainPage = () => {
         </h1>
         <BlocksWrap>
           <SearchBar />
-          <MainPageBlock>
+          <PageBlock>
             <H2Wrap>
               <span>Topics for you</span>
               <h2>Our special gallery</h2>
@@ -81,8 +80,8 @@ export const MainPage = () => {
                 />
               </PaginationWrap>
             </GalleryBlockWrap>
-          </MainPageBlock>
-          <MainPageBlock>
+          </PageBlock>
+          <PageBlock>
             <H2Wrap>
               <span>Here some more</span>
               <h2>Other works for you</h2>
@@ -96,7 +95,7 @@ export const MainPage = () => {
                 />
               ))}
             </ArtworksWrapExtra>
-          </MainPageBlock>
+          </PageBlock>
         </BlocksWrap>
       </MainPageContainer>
     )
