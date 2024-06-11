@@ -20,3 +20,9 @@ export type GetArtworksResponse = {
     website_url: string;
   };
 };
+
+export type GetArtworkResponse = {
+  data: Artwork;
+  info: GetArtworksResponse['info'];
+  config: GetArtworksResponse['config'];
+};

@@ -4,9 +4,11 @@ import FavoritesIcon from '@/assets/icons/bookmark.svg?react';
 export const AddToFavoritesButton = ({
   onClick,
   isFavorite,
+  appearance = 'default',
 }: {
   onClick: () => void;
   isFavorite: boolean;
+  appearance?: 'default' | 'white';
 }) => {
   return (
     <AddToFavoritesBtnWrap
@@ -15,6 +17,7 @@ export const AddToFavoritesButton = ({
         event.preventDefault();
         onClick();
       }}
+      $appearance={appearance}
     >
       <FavoritesIcon />
     </AddToFavoritesBtnWrap>

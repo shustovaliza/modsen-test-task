@@ -1,7 +1,9 @@
 import { MainLayout } from '@/layouts/MainLayout';
+import { ArtworkPage } from '@/pages/Artwork';
 import { FavoritesPage } from '@/pages/Favorites';
 import { MainPage } from '@/pages/Main';
 import { NotFoundPage } from '@/pages/NotFound';
+
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 const routerSchema = createBrowserRouter([
@@ -11,6 +13,7 @@ const routerSchema = createBrowserRouter([
     children: [
       { index: true, Component: MainPage },
       { path: '/favorites', Component: FavoritesPage },
+      { path: '/artwork/:id', Component: ArtworkPage },
       {
         path: '*',
         Component: NotFoundPage,
