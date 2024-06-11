@@ -89,7 +89,11 @@ export const MainPage = () => {
             </H2Wrap>
             <ArtworksWrapExtra>
               {extraArtworksResonse.data.map((artwork) => (
-                <ArtworkCard artwork={artwork} appearance="small" />
+                <ArtworkCard
+                  key={artwork.id}
+                  artwork={artwork}
+                  appearance="small"
+                />
               ))}
             </ArtworksWrapExtra>
           </MainPageBlock>

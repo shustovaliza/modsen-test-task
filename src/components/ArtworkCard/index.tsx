@@ -8,6 +8,8 @@ import {
 } from './styled';
 import { AddToFavoritesButton } from '../AddToFavoritesButon';
 import notFoundImage from '@/assets/pictures/notFoundImage.jpeg';
+import { useAppDispatch, useAppSelector } from '@/store/store.types';
+import { artworksActions } from '@/store/slices/artworks.slice';
 
 export const ArtworkCard = ({
   appearance = 'big',
@@ -16,9 +18,13 @@ export const ArtworkCard = ({
   appearance?: 'big' | 'small';
   artwork: Artwork;
 }) => {
+  const isFavorite = useAppSelector((state) =>
+    state.artworks.favoriteArtworks.includes(artwork.id),
+  );
+  const dispatch = useAppDispatch();
   return (
-    <ArtworkCardWrap appearance={appearance} href={`/artwork/${artwork.id}`}>
-      <ImageWrap appearance={appearance}>
+    <ArtworkCardWrap $appearance={appearance} href={`/artwork/${artwork.id}`}>
+      <ImageWrap $appearance={appearance}>
         <img
           alt={`${artwork.title} picture`}
           loading="lazy"
@@ -29,7 +35,7 @@ export const ArtworkCard = ({
           }
         ></img>
       </ImageWrap>
-      <ArtworkDescription appearance={appearance}>
+      <ArtworkDescription $appearance={appearance}>
         <TitleWrap>
           <div>
             <span>{artwork.title}</span>
@@ -37,7 +43,12 @@ export const ArtworkCard = ({
           </div>
           <ArtworkType>{artwork.artwork_type_title}</ArtworkType>
         </TitleWrap>
-        <AddToFavoritesButton onClick={() => {}} />
+        <AddToFavoritesButton
+          isFavorite={isFavorite}
+          onClick={() => {
+            dispatch(artworksActions.addArtworkToFavorites(artwork.id));
+          }}
+        />
       </ArtworkDescription>
     </ArtworkCardWrap>
   );
