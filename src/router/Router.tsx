@@ -1,5 +1,6 @@
 import { MainLayout } from '@/layouts/MainLayout';
 import { MainPage } from '@/pages/Main';
+import { NotFoundPage } from '@/pages/NotFound';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 const routerSchema = createBrowserRouter([
@@ -10,7 +11,7 @@ const routerSchema = createBrowserRouter([
       { index: true, Component: MainPage },
       {
         path: '*',
-        element: <div>Not found</div>,
+        Component: NotFoundPage,
       },
     ],
   },

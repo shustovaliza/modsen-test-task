@@ -15,4 +15,10 @@ export const MainLayoutContainer = styled.div`
     padding: 120px 50px;
     box-sizing: border-box;
   }
+
+  @media ${(props) => props.theme.media.sm} {
+    main {
+      padding: 150px 50px 50px 50px;
+    }
+  }
 `;

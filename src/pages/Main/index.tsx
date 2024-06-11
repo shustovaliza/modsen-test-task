@@ -4,17 +4,28 @@ import { useSearchParams } from 'react-router-dom';
 import { useGetArtworksQuery } from '@/store/api/artworks/artworks.api';
 import { getCurrentPage } from '@/utils/utils';
 import { Pagination } from '@/components/Pagination';
+import { Loader } from '@/components/Loader';
+import { FetchError } from '@/components/FetchError';
 
 export const MainPage = () => {
   const [searchParameters, setSearchParameters] = useSearchParams();
-  const { data } = useGetArtworksQuery(+(searchParameters.get('page') || 1));
+  const { data, status } = useGetArtworksQuery(
+    +(searchParameters.get('page') || 1),
+  );
 
   const page = getCurrentPage(
     searchParameters,
     data?.pagination.total_pages || 0,
   );
 
-  console.log(data);
+  if (status === 'pending') {
+    return <Loader />;
+  }
+
+  if (status === 'rejected') {
+    return <FetchError />;
+  }
+
   return (
     data && (
       <MainPageContainer>
