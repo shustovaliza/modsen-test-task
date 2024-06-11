@@ -15,7 +15,17 @@ export const artworksApi = baseApi.injectEndpoints({
         };
       },
     }),
+    getArtworksByIds: build.query<GetArtworksResponse, number[]>({
+      query: (ids) => {
+        const parameters = new URLSearchParams();
+        parameters.append('ids', String(ids));
+        return {
+          url: `artworks`,
+          params: parameters,
+        };
+      },
+    }),
   }),
 });
 
-export const { useGetArtworksQuery } = artworksApi;
+export const { useGetArtworksQuery, useGetArtworksByIdsQuery } = artworksApi;

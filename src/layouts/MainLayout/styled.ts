@@ -18,7 +18,7 @@ export const MainLayoutContainer = styled.div`
 
   @media ${(props) => props.theme.media.sm} {
     main {
-      padding: 150px 50px 50px 50px;
+      padding: 150px 20px 50px 20px;
     }
   }
 `;

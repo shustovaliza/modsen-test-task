@@ -13,7 +13,7 @@ export const MainPageContainer = styled.div`
     font-weight: 700;
     line-height: 80px;
     text-align: center;
-    margin-bottom: 72px;
+    margin-bottom: 34px;
 
     span {
       color: ${(props) => props.theme.colors.orange};
@@ -26,4 +26,79 @@ export const MainPageContainer = styled.div`
       line-height: 60px;
     }
   }
+
+  @media ${(props) => props.theme.media.sm} {
+    h1 {
+      font-size: 40px;
+      line-height: 40px;
+    }
+  }
+`;
+
+export const ArtworkCardsWrap = styled.div`
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  gap: 40px;
+
+  @media ${(props) => props.theme.media.sm} {
+    gap: 16px;
+  }
+`;
+
+export const H2Wrap = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  span {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: ${(props) => props.theme.colors.lightOrange};
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 40px;
+    text-align: center;
+  }
+`;
+
+export const MainPageBlock = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+`;
+
+export const BlocksWrap = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 120px;
+  align-items: center;
+`;
+
+export const GalleryBlockWrap = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+`;
+
+export const PaginationWrap = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+`;
+
+export const ArtworksWrapExtra = styled.div`
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  gap: 16px;
 `;

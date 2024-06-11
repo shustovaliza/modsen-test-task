@@ -9,6 +9,7 @@ declare module 'styled-components' {
       orange: '#F17900';
       lightOrange: '#E0A449';
       error: '#ff5154';
+      orangeTransparent: '#FBD7B24D';
     };
     media: {
       xs: `(max-width: 400px)`;

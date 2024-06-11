@@ -1,9 +1,15 @@
 import styled from 'styled-components';
 
 export const PaginationWrap = styled.div`
+  max-width: 360px;
   width: 100%;
   display: flex;
+  justify-content: flex-end;
   gap: 20px;
+
+  @media ${(props) => props.theme.media.sm} {
+    gap: 10px;
+  }
 `;
 
 export const PaginationButton = styled.button`
