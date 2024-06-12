@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 export const SortingWrap = styled.form``;
 
-export const CheckboxContainer = styled.div`
-  display: block;
+export const CheckboxContainer = styled.label`
+  display: flex;
   position: relative;
   font-size: 18px;
   height: 30px;
@@ -12,37 +12,38 @@ export const CheckboxContainer = styled.div`
   -ms-user-select: none;
   user-select: none;
   padding-left: 40px;
-
-  label {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-`;
-
-export const Checkbox = styled.input`
-  appearance: none;
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 30px;
-  width: 30px;
-  background-color: ${(props) => props.theme.colors.white};
-  border: 1px solid #f0f1f1;
-  border-radius: 5px;
   cursor: pointer;
+  align-items: center;
 
-  &:checked {
+  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  input:checked ~ span {
     background-color: ${(props) => props.theme.colors.orange};
   }
 
-  &:checked::before {
-    content: '';
-    display: block;
+  span {
     position: absolute;
-    left: 9px;
-    top: 3px;
+    top: 0;
+    left: 0;
+    height: 30px;
+    width: 30px;
+    background-color: ${(props) => props.theme.colors.white};
+    border: 2px solid ${(props) => props.theme.colors.orange};
+    border-radius: 5px;
+  }
+
+  span:after {
+    content: '';
+    position: absolute;
+    display: none;
+    left: 11px;
+    top: 4px;
     width: 7px;
     height: 14px;
     border: solid ${(props) => props.theme.colors.white};
@@ -50,5 +51,9 @@ export const Checkbox = styled.input`
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
+  }
+
+  input:checked ~ span::after {
+    display: block;
   }
 `;
