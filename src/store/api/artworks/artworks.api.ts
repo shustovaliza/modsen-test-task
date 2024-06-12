@@ -21,6 +21,11 @@ export const artworksApi = baseApi.injectEndpoints({
         if (props.query) {
           parameters.append('query[match][title]', `${props.query}`);
         }
+
+        if (props.sortField) {
+          parameters.append(`sort[${props.sortField}][order]`, `desc`);
+        }
+
         return {
           url: `artworks/search`,
           params: parameters,

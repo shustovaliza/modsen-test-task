@@ -1,12 +1,28 @@
-import { SortingWrap } from './styled';
+import { Checkbox, CheckboxContainer, SortingWrap } from './styled';
 
-export const Sorting = () => {
+export const Sorting = ({
+  isChecked,
+  onChange,
+}: {
+  isChecked: boolean;
+  onChange: () => void;
+}) => {
   return (
     <SortingWrap>
-      <div>
-        <input type="checkbox" id="sortByUpdateDate" checked={true} />
-        <label htmlFor="sortByUpdateDate">Sort by update date</label>
-      </div>
+      <CheckboxContainer>
+        <Checkbox
+          type="checkbox"
+          id="sortByUpdateDate"
+          checked={isChecked}
+          onChange={onChange}
+        />
+        <label
+          htmlFor="sortByUpdateDate"
+          onClick={(event) => event.preventDefault()}
+        >
+          Sort by update date
+        </label>
+      </CheckboxContainer>
     </SortingWrap>
   );
 };

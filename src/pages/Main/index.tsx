@@ -7,6 +7,7 @@ import {
   MainPageContainer,
   NothingFoundMessage,
   PaginationWrap,
+  SearchAndSortingWrap,
 } from './styled';
 import { useSearchParams } from 'react-router-dom';
 import {
@@ -28,6 +29,7 @@ export const MainPage = () => {
     useGetArtworksQuery({
       page: searchParameters.get('page') || '1',
       query: searchParameters.get('query') || undefined,
+      sortField: searchParameters.get('sort') || undefined,
     });
   const { data: extraArtworksResonse, status: getExtraArtworksStatus } =
     useGetArtworksByIdsQuery([
@@ -58,29 +60,46 @@ export const MainPage = () => {
           Let's Find Some <span>Art</span> Here!
         </h1>
         <BlocksWrap>
-          <SearchBar
-            initialValue={searchParameters.get('query') || ''}
-            onSubmit={(values) =>
-              setSearchParameters((old) => {
-                if (!values.search) {
+          <SearchAndSortingWrap>
+            <SearchBar
+              initialValue={searchParameters.get('query') || ''}
+              onSubmit={(values) =>
+                setSearchParameters((old) => {
+                  if (!values.search) {
+                    old.delete('query');
+                    old.delete('page');
+                  } else {
+                    old.set('query', `${values.search}`);
+                    old.set('page', '1');
+                  }
+                  return old;
+                })
+              }
+              onReset={() =>
+                setSearchParameters((old) => {
                   old.delete('query');
                   old.delete('page');
+                  return old;
+                })
+              }
+            />
+            <Sorting
+              isChecked={searchParameters.get('sort') ? true : false}
+              onChange={() => {
+                if (searchParameters.get('sort')) {
+                  setSearchParameters((old) => {
+                    old.delete('sort');
+                    return old;
+                  });
                 } else {
-                  old.set('query', `${values.search}`);
-                  old.set('page', '1');
+                  setSearchParameters((old) => {
+                    old.set('sort', 'source_updated_at');
+                    return old;
+                  });
                 }
-                return old;
-              })
-            }
-            onReset={() =>
-              setSearchParameters((old) => {
-                old.delete('query');
-                old.delete('page');
-                return old;
-              })
-            }
-          />
-          <Sorting />
+              }}
+            />
+          </SearchAndSortingWrap>
           <PageBlock>
             <H2Wrap>
               <span>Topics for you</span>

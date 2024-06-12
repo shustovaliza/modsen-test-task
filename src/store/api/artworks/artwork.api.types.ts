@@ -30,5 +30,5 @@ export type GetArtworkResponse = {
 export type GetArtworksPayload = {
   page: string;
   query?: string;
-  sort?: string;
+  sortField?: string;
 };

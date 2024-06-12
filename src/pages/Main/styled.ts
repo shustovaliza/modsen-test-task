@@ -88,3 +88,11 @@ export const ArtworksWrapExtra = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
   gap: 16px;
 `;
+
+export const SearchAndSortingWrap = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+`;
