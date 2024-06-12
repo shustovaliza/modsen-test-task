@@ -31,9 +31,11 @@ export const SearchInput = styled.input`
   box-sizing: border-box;
   font-family: Lexend Deca;
   font-weight: 300;
+  outline: none;
+  border: solid 2px transparent;
 
   &:focus {
-    outline: 2px solid ${(props) => props.theme.colors.orange};
+    border: 2px solid ${(props) => props.theme.colors.orange};
   }
 `;
 
@@ -44,6 +46,7 @@ export const SearchButton = styled.button`
   height: 35px;
   top: 15px;
   fill: ${(props) => props.theme.colors.black};
+  background: inherit;
 
   &:disabled {
     pointer-events: none;
