@@ -1,5 +1,9 @@
 import { H2Wrap, PageBlock } from '@/styles/sharedStyles';
-import { FavoriteArtworksWrap, FavoritesPageContainer } from './styled';
+import {
+  EmptyList,
+  FavoriteArtworksWrap,
+  FavoritesPageContainer,
+} from './styled';
 import FavoritesIcon from '@/assets/icons/bookmark.svg?react';
 import { useGetArtworksByIdsQuery } from '@/store/api/artworks/artworks.api';
 import { useAppSelector } from '@/store/store.types';
@@ -37,15 +41,21 @@ export const FavoritesPage = () => {
             <span>Saved by you</span>
             <h2>Your favorites list</h2>
           </H2Wrap>
-          <FavoriteArtworksWrap>
-            {data.data.map((artwork) => (
-              <ArtworkCard
-                key={artwork.id}
-                artwork={artwork}
-                appearance="small"
-              />
-            ))}
-          </FavoriteArtworksWrap>
+          {favoriteArtworksId.length ? (
+            <FavoriteArtworksWrap>
+              {data.data.map((artwork) => (
+                <ArtworkCard
+                  key={artwork.id}
+                  artwork={artwork}
+                  appearance="small"
+                />
+              ))}
+            </FavoriteArtworksWrap>
+          ) : (
+            <EmptyList>
+              <h2>There is nothing in your list of favorite artworks yet</h2>
+            </EmptyList>
+          )}
         </PageBlock>
       </FavoritesPageContainer>
     )
