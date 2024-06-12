@@ -26,3 +26,9 @@ export type GetArtworkResponse = {
   info: GetArtworksResponse['info'];
   config: GetArtworksResponse['config'];
 };
+
+export type GetArtworksPayload = {
+  page: string;
+  query?: string;
+  sort?: string;
+};

@@ -46,6 +46,21 @@ export const ArtworkCardsWrap = styled.div`
   }
 `;
 
+export const NothingFoundMessage = styled.div`
+  width: 100%;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  h2 {
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 40px;
+    text-align: center;
+  }
+`;
+
 export const BlocksWrap = styled.div`
   width: 100%;
   display: flex;

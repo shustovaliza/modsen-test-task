@@ -10,19 +10,26 @@ import {
 import SearchIcon from '@/assets/icons/search.svg?react';
 import ClearSearchIcon from '@/assets/icons/closeIcon.svg?react';
 
-export const SearchBar = () => {
+export const SearchBar = ({
+  initialValue,
+  onSubmit,
+  onReset,
+}: {
+  initialValue: string;
+  onSubmit: (values: { search: string }) => void;
+  onReset: () => void;
+}) => {
   const formik = useFormik({
     initialValues: {
-      search: '',
+      search: initialValue,
     },
     validationSchema: Yup.object({
       search: Yup.string()
         .min(3, 'Must be 3 characters or more')
         .max(50, 'Must be 50 characters or less'),
     }),
-    onSubmit: (values) => {
-      console.log(values);
-    },
+    onSubmit: onSubmit,
+    onReset: onReset,
   });
 
   return (
@@ -39,7 +46,7 @@ export const SearchBar = () => {
           id="search"
           name="search"
           type="text"
-          placeholder="Search art, artist, work..."
+          placeholder="Search by title"
           onChange={formik.handleChange}
           value={formik.values.search}
         />
