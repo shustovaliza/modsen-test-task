@@ -10,6 +10,7 @@ import { AddToFavoritesButton } from '../AddToFavoritesButon';
 import notFoundImage from '@/assets/pictures/notFoundImage.jpeg';
 import { useAppDispatch, useAppSelector } from '@/store/store.types';
 import { artworksActions } from '@/store/slices/artworks.slice';
+import { Link } from 'react-router-dom';
 
 export const ArtworkCard = ({
   appearance = 'big',
@@ -23,8 +24,8 @@ export const ArtworkCard = ({
   );
   const dispatch = useAppDispatch();
   return (
-    <ArtworkCardWrap $appearance={appearance} href={`/artwork/${artwork.id}`}>
-      <ImageWrap $appearance={appearance}>
+    <ArtworkCardWrap $appearance={appearance}>
+      <ImageWrap $appearance={appearance} href={`/artwork/${artwork.id}`}>
         <img
           alt={`${artwork.title} picture`}
           loading="lazy"
@@ -38,7 +39,7 @@ export const ArtworkCard = ({
       <ArtworkDescription $appearance={appearance}>
         <TitleWrap>
           <div>
-            <span>{artwork.title}</span>
+            <Link to={`/artwork/${artwork.id}`}>{artwork.title}</Link>
             <span>{artwork.artist_title}</span>
           </div>
           <ArtworkType>{artwork.artwork_type_title}</ArtworkType>

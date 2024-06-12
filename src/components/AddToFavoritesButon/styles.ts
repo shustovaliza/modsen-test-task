@@ -26,13 +26,6 @@ export const AddToFavoritesBtnWrap = styled.button<{
   border-radius: 50%;
   opacity: 1;
 
-  &:hover {
-    background: ${(props) =>
-      props.$appearance === 'white'
-        ? props.theme.colors.white
-        : props.theme.colors.orangeTransparent};
-  }
-
   svg {
     stroke: ${(props) => props.theme.colors.orange};
     fill: ${(props) =>

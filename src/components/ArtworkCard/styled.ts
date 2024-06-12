@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-export const ArtworkCardWrap = styled.a<{ $appearance: 'big' | 'small' }>`
+export const ArtworkCardWrap = styled.div<{ $appearance: 'big' | 'small' }>`
   ${(props) => {
     switch (props.$appearance) {
       case 'small':
@@ -44,7 +44,7 @@ export const ArtworkCardWrap = styled.a<{ $appearance: 'big' | 'small' }>`
   }}
 `;
 
-export const ImageWrap = styled.div<{ $appearance: 'big' | 'small' }>`
+export const ImageWrap = styled.a<{ $appearance: 'big' | 'small' }>`
   ${(props) => {
     switch (props.$appearance) {
       case 'small':
@@ -133,39 +133,38 @@ export const TitleWrap = styled.div`
     display: flex;
     flex-direction: column;
     gap: 5px;
+    width: 100%;
 
     span {
-      width: 100%;
       display: -webkit-box;
       -webkit-line-clamp: 1;
       -webkit-box-orient: vertical;
       overflow: hidden;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 20px;
+      color: ${(props) => props.theme.colors.lightOrange};
+    }
 
-      &:last-child {
-        font-size: 16px;
-        font-weight: 400;
-        line-height: 20px;
-        color: ${(props) => props.theme.colors.lightOrange};
-      }
-
-      &:first-child {
-        font-size: 18px;
-        font-weight: 500;
-        line-height: 20px;
-      }
+    a {
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 20px;
     }
   }
 
   @media ${(props) => props.theme.media.sm} {
     div {
       span {
-        &:last-child {
-          font-size: 14px;
-        }
+        font-size: 14px;
+      }
 
-        &:first-child {
-          font-size: 16px;
-        }
+      a {
+        font-size: 16px;
       }
     }
   }
