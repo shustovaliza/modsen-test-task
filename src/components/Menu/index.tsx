@@ -5,8 +5,13 @@ import { Navlinks } from '@/constants/navlinks';
 
 import { MenuWrap } from './styled';
 
+type MenuProps = {
+  isOpen: boolean;
+  currentPath: string;
+};
+
 export const Menu = forwardRef(function Menu(
-  props: { isOpen: boolean; currentPath: string },
+  props: MenuProps,
   ref: ForwardedRef<HTMLDivElement>,
 ) {
   return (

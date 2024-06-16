@@ -1,12 +1,11 @@
 import { CheckboxContainer, SortingWrap } from './styled';
 
-export const Sorting = ({
-  isChecked,
-  onChange,
-}: {
+type SortingProps = {
   isChecked: boolean;
   onChange: () => void;
-}) => {
+};
+
+export const Sorting = ({ isChecked, onChange }: SortingProps) => {
   return (
     <SortingWrap>
       <CheckboxContainer htmlFor="sortByUpdateDate">

@@ -12,15 +12,17 @@ import {
   SearchInputWrap,
 } from './styled';
 
+type SearchBarProps = {
+  initialValue: string;
+  onSubmit: (values: { search: string }) => void;
+  onReset: () => void;
+};
+
 export const SearchBar = ({
   initialValue,
   onSubmit,
   onReset,
-}: {
-  initialValue: string;
-  onSubmit: (values: { search: string }) => void;
-  onReset: () => void;
-}) => {
+}: SearchBarProps) => {
   const formik = useFormik({
     initialValues: {
       search: initialValue,

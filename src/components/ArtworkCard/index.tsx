@@ -15,13 +15,15 @@ import {
   TitleWrap,
 } from './styled';
 
+type ArtworkCardProps = {
+  appearance?: ArtworkCardAppearance;
+  artwork: Artwork;
+};
+
 export const ArtworkCard = ({
   appearance = ArtworkCardAppearance.big,
   artwork,
-}: {
-  appearance?: ArtworkCardAppearance;
-  artwork: Artwork;
-}) => {
+}: ArtworkCardProps) => {
   const isFavorite = useAppSelector((state) =>
     state.artworks.favoriteArtworks.includes(artwork.id),
   );

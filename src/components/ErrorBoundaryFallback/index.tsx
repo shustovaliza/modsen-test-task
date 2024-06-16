@@ -4,11 +4,13 @@ import {
   ResetButton,
 } from './styled';
 
+type ErrorBoundaryFallbackProps = {
+  resetErrorBoundary: () => void;
+};
+
 export const ErrorBoundaryFallback = ({
   resetErrorBoundary,
-}: {
-  resetErrorBoundary: () => void;
-}) => {
+}: ErrorBoundaryFallbackProps) => {
   return (
     <ErrorBoundaryContainer>
       <ErrorContentWrap>

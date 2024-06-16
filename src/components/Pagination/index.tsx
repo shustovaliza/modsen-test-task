@@ -5,15 +5,17 @@ import RightArrowIcon from '@/assets/icons/rightArrow.svg?react';
 
 import { ArrowsButton, PaginationButton, PaginationWrap } from './styled';
 
+type PaginationProps = {
+  totalNumberOfPages: number;
+  currentPage: number;
+  onPageChange: (page: number) => void;
+};
+
 export const Pagination = ({
   totalNumberOfPages,
   currentPage,
   onPageChange,
-}: {
-  totalNumberOfPages: number;
-  currentPage: number;
-  onPageChange: (page: number) => void;
-}) => {
+}: PaginationProps) => {
   const arrayOfCurrentButtons = useMemo(() => {
     let firstPage, lastPage;
 
