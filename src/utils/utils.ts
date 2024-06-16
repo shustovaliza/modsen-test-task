@@ -1,6 +1,6 @@
 import { ImgHTMLAttributes } from 'react';
 
-import notFoundImage from '@/assets/pictures/notFoundImage.jpeg';
+import notFoundImage from '@/assets/pictures/notFoundImage.png';
 import { IMAGE_API_URL } from '@/constants/api';
 
 import {
