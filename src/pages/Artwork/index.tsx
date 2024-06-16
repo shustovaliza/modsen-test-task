@@ -1,4 +1,13 @@
 import { useParams } from 'react-router-dom';
+
+import notFoundImage from '@/assets/pictures/notFoundImage.jpeg';
+import { AddToFavoritesButton } from '@/components/AddToFavoritesButon';
+import { FetchError } from '@/components/FetchError';
+import { Loader } from '@/components/Loader';
+import { useGetArtworkQuery } from '@/store/api/artworks/artworks.api';
+import { artworksActions } from '@/store/slices/artworks.slice';
+import { useAppDispatch, useAppSelector } from '@/store/store.types';
+
 import {
   ArtworkContentContainer,
   ArtworkPageContainer,
@@ -7,13 +16,6 @@ import {
   OverviewInfo,
   OverviewWrap,
 } from './styled';
-import notFoundImage from '@/assets/pictures/notFoundImage.jpeg';
-import { useGetArtworkQuery } from '@/store/api/artworks/artworks.api';
-import { Loader } from '@/components/Loader';
-import { FetchError } from '@/components/FetchError';
-import { AddToFavoritesButton } from '@/components/AddToFavoritesButon';
-import { useAppDispatch, useAppSelector } from '@/store/store.types';
-import { artworksActions } from '@/store/slices/artworks.slice';
 
 export const ArtworkPage = () => {
   const { id } = useParams<'id'>();

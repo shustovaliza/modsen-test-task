@@ -1,15 +1,16 @@
+import FavoritesIcon from '@/assets/icons/bookmark.svg?react';
+import { ArtworkCard } from '@/components/ArtworkCard';
+import { FetchError } from '@/components/FetchError';
+import { Loader } from '@/components/Loader';
+import { useGetArtworksByIdsQuery } from '@/store/api/artworks/artworks.api';
+import { useAppSelector } from '@/store/store.types';
 import { H2Wrap, PageBlock } from '@/styles/sharedStyles';
+
 import {
   EmptyList,
   FavoriteArtworksWrap,
   FavoritesPageContainer,
 } from './styled';
-import FavoritesIcon from '@/assets/icons/bookmark.svg?react';
-import { useGetArtworksByIdsQuery } from '@/store/api/artworks/artworks.api';
-import { useAppSelector } from '@/store/store.types';
-import { Loader } from '@/components/Loader';
-import { FetchError } from '@/components/FetchError';
-import { ArtworkCard } from '@/components/ArtworkCard';
 
 export const FavoritesPage = () => {
   const favoriteArtworksId = useAppSelector(

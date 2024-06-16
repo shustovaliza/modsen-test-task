@@ -1,7 +1,9 @@
-import { Navlinks } from '@/constants/navlinks';
-import { MenuWrap } from './styled';
-import { NavLink } from 'react-router-dom';
 import { ForwardedRef, forwardRef } from 'react';
+import { NavLink } from 'react-router-dom';
+
+import { Navlinks } from '@/constants/navlinks';
+
+import { MenuWrap } from './styled';
 
 export const Menu = forwardRef(function Menu(
   props: { isOpen: boolean; currentPath: string },

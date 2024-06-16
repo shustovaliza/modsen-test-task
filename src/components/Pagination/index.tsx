@@ -1,7 +1,9 @@
 import { useMemo } from 'react';
-import { ArrowsButton, PaginationButton, PaginationWrap } from './styled';
-import RightArrowIcon from '@/assets/icons/rightArrow.svg?react';
+
 import LeftArrowIcon from '@/assets/icons/leftArrow.svg?react';
+import RightArrowIcon from '@/assets/icons/rightArrow.svg?react';
+
+import { ArrowsButton, PaginationButton, PaginationWrap } from './styled';
 
 export const Pagination = ({
   totalNumberOfPages,

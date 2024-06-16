@@ -1,15 +1,17 @@
+import { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+
+import BurgerMenu from '@/assets/icons/burgerMenu.svg?react';
+import CloseBurgerMenu from '@/assets/icons/closeIcon.svg?react';
+import Logo from '@/assets/icons/logo.svg?react';
+
+import { Menu } from '../Menu';
 import {
   BurgerMenuButton,
   HeaderContentWrap,
   HeaderLogoWrap,
   StyledHeader,
 } from './styled';
-import Logo from '@/assets/icons/logo.svg?react';
-import BurgerMenu from '@/assets/icons/burgerMenu.svg?react';
-import CloseBurgerMenu from '@/assets/icons/closeIcon.svg?react';
-import { Menu } from '../Menu';
-import { useEffect, useRef, useState } from 'react';
 
 export const Header = () => {
   const location = useLocation();

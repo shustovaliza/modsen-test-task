@@ -1,4 +1,5 @@
 import { ReactElement } from 'react';
+
 import FavoritesIcon from '@/assets/icons/bookmark.svg?react';
 import HomeIcon from '@/assets/icons/home.svg?react';
 

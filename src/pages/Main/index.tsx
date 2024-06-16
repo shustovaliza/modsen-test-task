@@ -1,4 +1,18 @@
+import { useSearchParams } from 'react-router-dom';
+
+import { ArtworkCard } from '@/components/ArtworkCard';
+import { FetchError } from '@/components/FetchError';
+import { Loader } from '@/components/Loader';
+import { Pagination } from '@/components/Pagination';
 import { SearchBar } from '@/components/SearchBar';
+import { Sorting } from '@/components/Sorting';
+import {
+  useGetArtworksByIdsQuery,
+  useGetArtworksQuery,
+} from '@/store/api/artworks/artworks.api';
+import { H2Wrap, PageBlock } from '@/styles/sharedStyles';
+import { getCurrentPage } from '@/utils/utils';
+
 import {
   ArtworkCardsWrap,
   ArtworksWrapExtra,
@@ -9,18 +23,6 @@ import {
   PaginationWrap,
   SearchAndSortingWrap,
 } from './styled';
-import { useSearchParams } from 'react-router-dom';
-import {
-  useGetArtworksByIdsQuery,
-  useGetArtworksQuery,
-} from '@/store/api/artworks/artworks.api';
-import { getCurrentPage } from '@/utils/utils';
-import { Pagination } from '@/components/Pagination';
-import { Loader } from '@/components/Loader';
-import { FetchError } from '@/components/FetchError';
-import { ArtworkCard } from '@/components/ArtworkCard';
-import { H2Wrap, PageBlock } from '@/styles/sharedStyles';
-import { Sorting } from '@/components/Sorting';
 
 export const MainPage = () => {
   const [searchParameters, setSearchParameters] = useSearchParams();

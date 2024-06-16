@@ -1,5 +1,6 @@
-import { AddToFavoritesBtnWrap } from './styles';
 import FavoritesIcon from '@/assets/icons/bookmark.svg?react';
+
+import { AddToFavoritesBtnWrap } from './styles';
 
 export const AddToFavoritesButton = ({
   onClick,

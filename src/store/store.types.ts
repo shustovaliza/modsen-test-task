@@ -1,7 +1,7 @@
 import {
   type TypedUseSelectorHook,
-  useSelector,
   useDispatch,
+  useSelector,
 } from 'react-redux';
 
 import { type store } from './store';

@@ -1,4 +1,4 @@
-import { type PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 
 import { localStorageNames } from '@/constants/localStorage';
 import { Artwork } from '@/types/artwork';

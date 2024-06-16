@@ -1,4 +1,11 @@
+import { Link } from 'react-router-dom';
+
+import notFoundImage from '@/assets/pictures/notFoundImage.jpeg';
+import { artworksActions } from '@/store/slices/artworks.slice';
+import { useAppDispatch, useAppSelector } from '@/store/store.types';
 import { Artwork } from '@/types/artwork';
+
+import { AddToFavoritesButton } from '../AddToFavoritesButon';
 import {
   ArtworkCardWrap,
   ArtworkDescription,
@@ -6,11 +13,6 @@ import {
   ImageWrap,
   TitleWrap,
 } from './styled';
-import { AddToFavoritesButton } from '../AddToFavoritesButon';
-import notFoundImage from '@/assets/pictures/notFoundImage.jpeg';
-import { useAppDispatch, useAppSelector } from '@/store/store.types';
-import { artworksActions } from '@/store/slices/artworks.slice';
-import { Link } from 'react-router-dom';
 
 export const ArtworkCard = ({
   appearance = 'big',

@@ -1,5 +1,9 @@
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+
+import ClearSearchIcon from '@/assets/icons/closeIcon.svg?react';
+import SearchIcon from '@/assets/icons/search.svg?react';
+
 import {
   SearchBarErrorMessage,
   SearchBarForm,
@@ -7,8 +11,6 @@ import {
   SearchInput,
   SearchInputWrap,
 } from './styled';
-import SearchIcon from '@/assets/icons/search.svg?react';
-import ClearSearchIcon from '@/assets/icons/closeIcon.svg?react';
 
 export const SearchBar = ({
   initialValue,
