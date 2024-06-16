@@ -2,10 +2,12 @@ import styled from 'styled-components';
 
 import { AddToFavoritesButtonAppearance } from './AddToFavoritesButton.types';
 
-export const AddToFavoritesBtnWrap = styled.button<{
+type ButtonProps = {
   $isFavorite: boolean;
   $appearance: AddToFavoritesButtonAppearance;
-}>`
+};
+
+export const AddToFavoritesBtnWrap = styled.button<ButtonProps>`
   min-width: 59px;
   width: 59px;
   height: 59px;

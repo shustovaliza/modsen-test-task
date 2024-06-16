@@ -29,7 +29,7 @@ export const SearchInput = styled.input`
   font-size: 16px;
   line-height: 17px;
   box-sizing: border-box;
-  font-family: Lexend Deca;
+  font-family: ${(props) => props.theme.fonts.mainFont};
   font-weight: 300;
   outline: none;
   border: solid 2px transparent;

@@ -2,9 +2,11 @@ import styled, { css } from 'styled-components';
 
 import { ArtworkCardAppearance } from './ArtworkCard.types';
 
-export const ArtworkCardWrap = styled.div<{
+type ArtworkCardProps = {
   $appearance: ArtworkCardAppearance;
-}>`
+};
+
+export const ArtworkCardWrap = styled.div<ArtworkCardProps>`
   ${(props) => {
     switch (props.$appearance) {
       case ArtworkCardAppearance.small:
@@ -48,7 +50,7 @@ export const ArtworkCardWrap = styled.div<{
   }}
 `;
 
-export const ImageWrap = styled.a<{ $appearance: ArtworkCardAppearance }>`
+export const ImageWrap = styled.a<ArtworkCardProps>`
   ${(props) => {
     switch (props.$appearance) {
       case ArtworkCardAppearance.small:
@@ -87,9 +89,7 @@ export const ImageWrap = styled.a<{ $appearance: ArtworkCardAppearance }>`
   }}
 `;
 
-export const ArtworkDescription = styled.div<{
-  $appearance: ArtworkCardAppearance;
-}>`
+export const ArtworkDescription = styled.div<ArtworkCardProps>`
   ${(props) => {
     switch (props.$appearance) {
       case ArtworkCardAppearance.small:

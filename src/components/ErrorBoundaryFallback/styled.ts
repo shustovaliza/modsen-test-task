@@ -5,7 +5,7 @@ export const ErrorBoundaryContainer = styled.div`
   height: 100%;
   background: ${(props) => props.theme.colors.backgroundMainColor};
   display: flex;
-  font-family: Lexend Deca;
+  font-family: ${(props) => props.theme.fonts.mainFont};
   font-weight: 400;
 `;
 
@@ -32,7 +32,7 @@ export const ResetButton = styled.button`
   color: ${(props) => props.theme.colors.white};
   padding: 20px;
   border-radius: 5px;
-  font-family: Lexend Deca;
+  font-family: ${(props) => props.theme.fonts.mainFont};
   font-weight: 400;
   font-size: 20px;
   background-color: ${(props) => props.theme.colors.orange};

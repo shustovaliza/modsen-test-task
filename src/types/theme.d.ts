@@ -17,5 +17,8 @@ declare module 'styled-components' {
       md: `(max-width: 900px)`;
       lg: `(max-width: 1200px)`;
     };
+    fonts: {
+      mainFont: 'Lexend Deca';
+    };
   }
 }

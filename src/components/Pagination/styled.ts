@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+type ArrowButtonProps = {
+  hidden: boolean;
+};
+
 export const PaginationWrap = styled.div`
   max-width: 360px;
   width: 100%;
@@ -38,7 +42,7 @@ export const PaginationButton = styled.button`
   }
 `;
 
-export const ArrowsButton = styled.button<{ hidden: boolean }>`
+export const ArrowsButton = styled.button<ArrowButtonProps>`
   background: inherit;
   height: 100%;
   align-items: center;

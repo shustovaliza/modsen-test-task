@@ -14,7 +14,7 @@ export const GlobalStyle = createGlobalStyle`
   body {
     height: 100%; 
     width: 100%;
-    font-family: Lexend Deca;
+    font-family: ${(props) => props.theme.fonts.mainFont};
     font-weight: 400;
     background: ${(props) => props.theme.colors.backgroundMainColor};
     color: ${(props) => props.theme.colors.black};
@@ -36,6 +36,6 @@ export const GlobalStyle = createGlobalStyle`
 
   button {
     cursor: pointer;
-    font-family: Lexend Deca;
+    font-family: ${(props) => props.theme.fonts.mainFont};
   }
 `;
