@@ -43,7 +43,7 @@ export const MainPage = () => {
     artworksResonse?.pagination.total_pages || 0,
   );
 
-  if (getArtworksStatus === 'pending' || getExtraArtworksStatus === 'pending') {
+  if (getExtraArtworksStatus === 'pending') {
     return <Loader />;
   }
 
@@ -108,7 +108,9 @@ export const MainPage = () => {
               <h2>Our special gallery</h2>
             </H2Wrap>
             <GalleryBlockWrap>
-              {artworksResonse.data.length ? (
+              {getArtworksStatus === 'pending' ? (
+                <Loader />
+              ) : artworksResonse.data.length ? (
                 <>
                   <ArtworkCardsWrap>
                     {artworksResonse.data.map((artwork) => (

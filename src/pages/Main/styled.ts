@@ -48,7 +48,7 @@ export const ArtworkCardsWrap = styled.div`
 
 export const NothingFoundMessage = styled.div`
   width: 100%;
-  height: 250px;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -71,9 +71,27 @@ export const BlocksWrap = styled.div`
 
 export const GalleryBlockWrap = styled.div`
   width: 100%;
+  min-height: 580px;
+  height: 100%;
   display: flex;
   flex-direction: column;
   gap: 25px;
+
+  @media (max-width: 1169px) {
+    min-height: 1130px;
+  }
+
+  @media (max-width: 799px) {
+    min-height: 1685px;
+  }
+
+  @media (max-width: 799px) {
+    min-height: 1685px;
+  }
+
+  @media ${(props) => props.theme.media.sm} {
+    min-height: 485px;
+  }
 `;
 
 export const PaginationWrap = styled.div`
