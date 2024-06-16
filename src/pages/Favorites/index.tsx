@@ -47,7 +47,7 @@ export const FavoritesPage = () => {
           </H2Wrap>
           {favoriteArtworksId.length ? (
             <FavoriteArtworksWrap>
-              {data.data.map((artwork) => (
+              {data.map((artwork) => (
                 <ArtworkCard
                   key={artwork.id}
                   artwork={artwork}

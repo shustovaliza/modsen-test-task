@@ -11,7 +11,6 @@ export const Pagination = ({
   onPageChange,
 }: {
   totalNumberOfPages: number;
-  pages: number;
   currentPage: number;
   onPageChange: (page: number) => void;
 }) => {

@@ -1,14 +1,20 @@
+import { Artwork } from '@/types/artwork';
+
 import { baseApi } from '..';
 import {
   GetArtworkResponse,
   GetArtworksPayload,
   GetArtworksResponse,
+  GetArtworksTransformedResponse,
 } from './artwork.api.types';
 
 export const artworksApi = baseApi.injectEndpoints({
   overrideExisting: false,
   endpoints: (build) => ({
-    getArtworks: build.query<GetArtworksResponse, GetArtworksPayload>({
+    getArtworks: build.query<
+      GetArtworksTransformedResponse,
+      GetArtworksPayload
+    >({
       query: (props) => {
         const parameters = new URLSearchParams();
         parameters.append(
@@ -16,7 +22,7 @@ export const artworksApi = baseApi.injectEndpoints({
           'id,title,image_id,artist_title,artwork_type_title',
         );
         parameters.append('page', `${props.page}`);
-        parameters.append('limit', '3');
+        parameters.append('limit', `${props.limit}`);
 
         if (props.query) {
           parameters.append('query[match][title]', `${props.query}`);
@@ -31,8 +37,14 @@ export const artworksApi = baseApi.injectEndpoints({
           params: parameters,
         };
       },
+      transformResponse: (response: GetArtworksResponse) => {
+        return {
+          artworks: response.data,
+          pagination: response.pagination,
+        };
+      },
     }),
-    getArtworksByIds: build.query<GetArtworksResponse, number[]>({
+    getArtworksByIds: build.query<Artwork[], number[]>({
       query: (ids) => {
         const parameters = new URLSearchParams();
         parameters.append('ids', String(ids));
@@ -45,11 +57,17 @@ export const artworksApi = baseApi.injectEndpoints({
           params: parameters,
         };
       },
+      transformResponse: (response: GetArtworksResponse) => {
+        return response.data;
+      },
     }),
-    getArtwork: build.query<GetArtworkResponse, string>({
+    getArtwork: build.query<Artwork, string>({
       query: (id) => ({
         url: `artworks/${id}`,
       }),
+      transformResponse: (response: GetArtworkResponse) => {
+        return response.data;
+      },
     }),
   }),
 });

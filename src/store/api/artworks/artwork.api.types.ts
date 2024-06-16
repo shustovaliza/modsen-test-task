@@ -29,6 +29,12 @@ export type GetArtworkResponse = {
 
 export type GetArtworksPayload = {
   page: string;
+  limit: string;
   query?: string;
   sortField?: string;
+};
+
+export type GetArtworksTransformedResponse = {
+  artworks: GetArtworksResponse['data'];
+  pagination: GetArtworksResponse['pagination'];
 };

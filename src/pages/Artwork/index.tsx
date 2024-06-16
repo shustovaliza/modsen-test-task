@@ -41,17 +41,17 @@ export const ArtworkPage = () => {
       <ArtworkPageContainer>
         <ImageWrap>
           <img
-            alt={`${data.data.title} picture`}
+            alt={`${data.title} picture`}
             loading="lazy"
             src={
-              data.data.image_id === null
+              data.image_id === null
                 ? notFoundImage
-                : `https://www.artic.edu/iiif/2/${data.data.image_id}/full/497,/0/default.jpg`
+                : `https://www.artic.edu/iiif/2/${data.image_id}/full/497,/0/default.jpg`
             }
           ></img>
           <AddToFavoritesButton
             onClick={() =>
-              dispatch(artworksActions.addArtworkToFavorites(data.data.id))
+              dispatch(artworksActions.addArtworkToFavorites(data.id))
             }
             isFavorite={!!isFavorite}
             appearance={AddToFavoritesButtonAppearance.white}
@@ -59,10 +59,10 @@ export const ArtworkPage = () => {
         </ImageWrap>
         <ArtworkContentContainer>
           <MainInfoContainer>
-            <h1>{data.data.title}</h1>
+            <h1>{data.title}</h1>
             <div>
-              <span>{data.data.artist_title}</span>
-              <span>{data.data.date_end}</span>
+              <span>{data.artist_title}</span>
+              <span>{data.date_end}</span>
             </div>
           </MainInfoContainer>
           <OverviewWrap>
@@ -70,19 +70,19 @@ export const ArtworkPage = () => {
             <OverviewInfo>
               <div>
                 <span>Artist:</span>
-                <span>{data.data.artist_display}</span>
+                <span>{data.artist_display}</span>
               </div>
               <div>
                 <span>Description:</span>
-                <span>{data.data.medium_display}</span>
+                <span>{data.medium_display}</span>
               </div>
               <div>
                 <span>Dimensions:</span>
-                <span>{data.data.dimensions}</span>
+                <span>{data.dimensions}</span>
               </div>
               <div>
                 <span>Artwork type:</span>
-                <span>{data.data.artwork_type_title}</span>
+                <span>{data.artwork_type_title}</span>
               </div>
             </OverviewInfo>
           </OverviewWrap>

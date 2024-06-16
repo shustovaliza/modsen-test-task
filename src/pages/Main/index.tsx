@@ -26,24 +26,35 @@ import {
   SearchAndSortingWrap,
 } from './styled';
 
+const extraArtworksIds: number[] = [
+  184379, 184378, 184377, 184376, 109819, 84241, 80548, 59426, 249208,
+];
+const maxNumberOfPages = 100;
+const artworksPerPage = 3;
+
 export const MainPage = () => {
   const [searchParameters, setSearchParameters] = useSearchParams();
 
-  const { data: artworksResonse, status: getArtworksStatus } =
+  const { data: artworksResponse, status: getArtworksStatus } =
     useGetArtworksQuery({
       page: searchParameters.get('page') || '1',
+      limit: `${artworksPerPage}`,
       query: searchParameters.get('query') || undefined,
       sortField: searchParameters.get('sort') || undefined,
     });
-  const { data: extraArtworksResonse, status: getExtraArtworksStatus } =
-    useGetArtworksByIdsQuery([
-      184379, 184378, 184377, 184376, 109819, 84241, 80548, 59426, 249208,
-    ]);
+  const { data: extraArtworks, status: getExtraArtworksStatus } =
+    useGetArtworksByIdsQuery(extraArtworksIds);
 
   const page = getCurrentPage(
     searchParameters,
-    artworksResonse?.pagination.total_pages || 0,
+    artworksResponse?.pagination.total_pages || 0,
   );
+
+  const totalNumberOfPages = artworksResponse
+    ? artworksResponse.pagination.total_pages >= maxNumberOfPages
+      ? maxNumberOfPages
+      : artworksResponse?.pagination.total_pages
+    : 0;
 
   if (getExtraArtworksStatus === QueryStatus.pending) {
     return <Loader />;
@@ -57,8 +68,8 @@ export const MainPage = () => {
   }
 
   return (
-    artworksResonse &&
-    extraArtworksResonse && (
+    artworksResponse &&
+    extraArtworks && (
       <MainPageContainer>
         <h1>
           Let's Find Some <span>Art</span> Here!
@@ -112,22 +123,17 @@ export const MainPage = () => {
             <GalleryBlockWrap>
               {getArtworksStatus === QueryStatus.pending ? (
                 <Loader />
-              ) : artworksResonse.data.length ? (
+              ) : artworksResponse.artworks.length ? (
                 <>
                   <ArtworkCardsWrap>
-                    {artworksResonse.data.map((artwork) => (
+                    {artworksResponse.artworks.map((artwork) => (
                       <ArtworkCard key={artwork.id} artwork={artwork} />
                     ))}
                   </ArtworkCardsWrap>
                   <PaginationWrap>
                     <Pagination
-                      pages={10}
                       currentPage={page}
-                      totalNumberOfPages={
-                        artworksResonse.pagination.total_pages >= 100
-                          ? 100
-                          : artworksResonse.pagination.total_pages
-                      }
+                      totalNumberOfPages={totalNumberOfPages}
                       onPageChange={(nextPage) =>
                         setSearchParameters((old) => {
                           old.set('page', `${nextPage}`);
@@ -150,7 +156,7 @@ export const MainPage = () => {
               <h2>Other works for you</h2>
             </H2Wrap>
             <ArtworksWrapExtra>
-              {extraArtworksResonse.data.map((artwork) => (
+              {extraArtworks.map((artwork) => (
                 <ArtworkCard
                   key={artwork.id}
                   artwork={artwork}
