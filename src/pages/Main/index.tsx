@@ -1,6 +1,8 @@
+import { QueryStatus } from '@reduxjs/toolkit/query';
 import { useSearchParams } from 'react-router-dom';
 
 import { ArtworkCard } from '@/components/ArtworkCard';
+import { ArtworkCardAppearance } from '@/components/ArtworkCard/ArtworkCard.types';
 import { FetchError } from '@/components/FetchError';
 import { Loader } from '@/components/Loader';
 import { Pagination } from '@/components/Pagination';
@@ -43,13 +45,13 @@ export const MainPage = () => {
     artworksResonse?.pagination.total_pages || 0,
   );
 
-  if (getExtraArtworksStatus === 'pending') {
+  if (getExtraArtworksStatus === QueryStatus.pending) {
     return <Loader />;
   }
 
   if (
-    getArtworksStatus === 'rejected' ||
-    getExtraArtworksStatus === 'rejected'
+    getArtworksStatus === QueryStatus.rejected ||
+    getExtraArtworksStatus === QueryStatus.rejected
   ) {
     return <FetchError />;
   }
@@ -108,7 +110,7 @@ export const MainPage = () => {
               <h2>Our special gallery</h2>
             </H2Wrap>
             <GalleryBlockWrap>
-              {getArtworksStatus === 'pending' ? (
+              {getArtworksStatus === QueryStatus.pending ? (
                 <Loader />
               ) : artworksResonse.data.length ? (
                 <>
@@ -152,7 +154,7 @@ export const MainPage = () => {
                 <ArtworkCard
                   key={artwork.id}
                   artwork={artwork}
-                  appearance="small"
+                  appearance={ArtworkCardAppearance.small}
                 />
               ))}
             </ArtworksWrapExtra>

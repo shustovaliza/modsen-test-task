@@ -1,9 +1,13 @@
 import styled, { css } from 'styled-components';
 
-export const ArtworkCardWrap = styled.div<{ $appearance: 'big' | 'small' }>`
+import { ArtworkCardAppearance } from './ArtworkCard.types';
+
+export const ArtworkCardWrap = styled.div<{
+  $appearance: ArtworkCardAppearance;
+}>`
   ${(props) => {
     switch (props.$appearance) {
-      case 'small':
+      case ArtworkCardAppearance.small:
         return css`
           display: flex;
           flex-direction: row;
@@ -44,10 +48,10 @@ export const ArtworkCardWrap = styled.div<{ $appearance: 'big' | 'small' }>`
   }}
 `;
 
-export const ImageWrap = styled.a<{ $appearance: 'big' | 'small' }>`
+export const ImageWrap = styled.a<{ $appearance: ArtworkCardAppearance }>`
   ${(props) => {
     switch (props.$appearance) {
-      case 'small':
+      case ArtworkCardAppearance.small:
         return css`
           min-width: 80px;
           width: 80px;
@@ -83,10 +87,12 @@ export const ImageWrap = styled.a<{ $appearance: 'big' | 'small' }>`
   }}
 `;
 
-export const ArtworkDescription = styled.div<{ $appearance: 'big' | 'small' }>`
+export const ArtworkDescription = styled.div<{
+  $appearance: ArtworkCardAppearance;
+}>`
   ${(props) => {
     switch (props.$appearance) {
-      case 'small':
+      case ArtworkCardAppearance.small:
         return css`
           height: 100%;
           width: 100%;

@@ -5,7 +5,8 @@ import { artworksActions } from '@/store/slices/artworks.slice';
 import { useAppDispatch, useAppSelector } from '@/store/store.types';
 import { Artwork } from '@/types/artwork';
 
-import { AddToFavoritesButton } from '../AddToFavoritesButon';
+import { AddToFavoritesButton } from '../AddToFavoritesButton';
+import { ArtworkCardAppearance } from './ArtworkCard.types';
 import {
   ArtworkCardWrap,
   ArtworkDescription,
@@ -15,10 +16,10 @@ import {
 } from './styled';
 
 export const ArtworkCard = ({
-  appearance = 'big',
+  appearance = ArtworkCardAppearance.big,
   artwork,
 }: {
-  appearance?: 'big' | 'small';
+  appearance?: ArtworkCardAppearance;
   artwork: Artwork;
 }) => {
   const isFavorite = useAppSelector((state) =>
@@ -34,7 +35,7 @@ export const ArtworkCard = ({
           src={
             artwork.image_id === null
               ? notFoundImage
-              : `https://www.artic.edu/iiif/2/${artwork.image_id}/full/${appearance === 'big' ? '387' : '200'},/0/default.jpg`
+              : `https://www.artic.edu/iiif/2/${artwork.image_id}/full/${appearance === ArtworkCardAppearance.big ? '387' : '200'},/0/default.jpg`
           }
         ></img>
       </ImageWrap>

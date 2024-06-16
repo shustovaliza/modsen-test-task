@@ -1,5 +1,8 @@
+import { QueryStatus } from '@reduxjs/toolkit/query';
+
 import FavoritesIcon from '@/assets/icons/bookmark.svg?react';
 import { ArtworkCard } from '@/components/ArtworkCard';
+import { ArtworkCardAppearance } from '@/components/ArtworkCard/ArtworkCard.types';
 import { FetchError } from '@/components/FetchError';
 import { Loader } from '@/components/Loader';
 import { useGetArtworksByIdsQuery } from '@/store/api/artworks/artworks.api';
@@ -19,11 +22,11 @@ export const FavoritesPage = () => {
 
   const { data, status } = useGetArtworksByIdsQuery(favoriteArtworksId);
 
-  if (status === 'pending') {
+  if (status === QueryStatus.pending) {
     return <Loader />;
   }
 
-  if (status === 'rejected') {
+  if (status === QueryStatus.rejected) {
     return <FetchError />;
   }
 
@@ -48,7 +51,7 @@ export const FavoritesPage = () => {
                 <ArtworkCard
                   key={artwork.id}
                   artwork={artwork}
-                  appearance="small"
+                  appearance={ArtworkCardAppearance.small}
                 />
               ))}
             </FavoriteArtworksWrap>

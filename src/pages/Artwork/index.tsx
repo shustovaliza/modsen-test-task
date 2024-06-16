@@ -1,7 +1,9 @@
+import { QueryStatus } from '@reduxjs/toolkit/query';
 import { useParams } from 'react-router-dom';
 
 import notFoundImage from '@/assets/pictures/notFoundImage.jpeg';
-import { AddToFavoritesButton } from '@/components/AddToFavoritesButon';
+import { AddToFavoritesButton } from '@/components/AddToFavoritesButton';
+import { AddToFavoritesButtonAppearance } from '@/components/AddToFavoritesButton/AddToFavoritesButton.types';
 import { FetchError } from '@/components/FetchError';
 import { Loader } from '@/components/Loader';
 import { useGetArtworkQuery } from '@/store/api/artworks/artworks.api';
@@ -26,11 +28,11 @@ export const ArtworkPage = () => {
   );
   const dispatch = useAppDispatch();
 
-  if (status === 'pending') {
+  if (status === QueryStatus.pending) {
     return <Loader />;
   }
 
-  if (status === 'rejected') {
+  if (status === QueryStatus.rejected) {
     return <FetchError />;
   }
 
@@ -52,7 +54,7 @@ export const ArtworkPage = () => {
               dispatch(artworksActions.addArtworkToFavorites(data.data.id))
             }
             isFavorite={!!isFavorite}
-            appearance="white"
+            appearance={AddToFavoritesButtonAppearance.white}
           />
         </ImageWrap>
         <ArtworkContentContainer>
