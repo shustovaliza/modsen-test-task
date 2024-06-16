@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const FavoritesPageContainer = styled.div`
+export const FavoritesPageContainer = styled.article`
   width: 100%;
   display: flex;
   flex-direction: column;

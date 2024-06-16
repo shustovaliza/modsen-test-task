@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const NotFoundPageWrap = styled.div`
+export const NotFoundPageWrap = styled.article`
   width: 100%;
   min-height: 100%;
   display: flex;

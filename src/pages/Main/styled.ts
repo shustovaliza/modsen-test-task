@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const MainPageContainer = styled.div`
+export const MainPageContainer = styled.article`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -107,7 +107,7 @@ export const ArtworksWrapExtra = styled.div`
   gap: 16px;
 `;
 
-export const SearchAndSortingWrap = styled.div`
+export const SearchAndSortingWrap = styled.section`
   width: 100%;
   display: flex;
   flex-direction: column;

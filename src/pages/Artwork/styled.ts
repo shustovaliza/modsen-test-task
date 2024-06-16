@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ArtworkPageContainer = styled.div`
+export const ArtworkPageContainer = styled.article`
   width: 100%;
   height: 100%;
   display: flex;
@@ -18,7 +18,7 @@ export const ArtworkPageContainer = styled.div`
   }
 `;
 
-export const ImageWrap = styled.div`
+export const ImageWrap = styled.section`
   max-width: 500px;
   min-width: 400px;
   width: 100%;
@@ -44,7 +44,7 @@ export const ImageWrap = styled.div`
   }
 `;
 
-export const ArtworkContentContainer = styled.div`
+export const ArtworkContentContainer = styled.section`
   width: 100%;
   min-height: 100%;
   display: flex;

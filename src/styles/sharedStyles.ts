@@ -22,7 +22,7 @@ export const H2Wrap = styled.div`
   }
 `;
 
-export const PageBlock = styled.div`
+export const PageBlock = styled.section`
   width: 100%;
   display: flex;
   flex-direction: column;
