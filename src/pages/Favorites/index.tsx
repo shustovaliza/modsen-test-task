@@ -11,7 +11,7 @@ import { H2Wrap, PageBlock } from '@/styles/sharedStyles';
 
 import { FavoritesPageContainer } from './styled';
 
-export const FavoritesPage = () => {
+const FavoritesPage = () => {
   const favoriteArtworksId = useAppSelector(getFavoriteArtworksId);
 
   const { data, status } = useGetArtworksByIdsQuery(favoriteArtworksId);
@@ -48,3 +48,5 @@ export const FavoritesPage = () => {
     )
   );
 };
+
+export default FavoritesPage;

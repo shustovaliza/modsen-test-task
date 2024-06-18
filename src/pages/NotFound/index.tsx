@@ -1,6 +1,6 @@
 import { NotFoundPageWrap } from './styled';
 
-export const NotFoundPage = () => {
+const NotFoundPage = () => {
   return (
     <NotFoundPageWrap>
       <h1>404</h1>
@@ -8,3 +8,5 @@ export const NotFoundPage = () => {
     </NotFoundPageWrap>
   );
 };
+
+export default NotFoundPage;

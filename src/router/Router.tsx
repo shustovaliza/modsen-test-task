@@ -1,22 +1,24 @@
+import { lazy } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import { MainLayout } from '@/layouts/MainLayout';
-import { ArtworkPage } from '@/pages/Artwork';
-import { FavoritesPage } from '@/pages/Favorites';
-import { MainPage } from '@/pages/Main';
-import { NotFoundPage } from '@/pages/NotFound';
+import MainLayout from '@/layouts/MainLayout';
+
+const MainPage = lazy(() => import('@/pages/Main'));
+const ArtworkPage = lazy(() => import('@/pages/Artwork'));
+const FavoritesPage = lazy(() => import('@/pages/Favorites'));
+const NotFoundPage = lazy(() => import('@/pages/NotFound'));
 
 const routerSchema = createBrowserRouter([
   {
-    Component: MainLayout,
+    element: <MainLayout />,
     path: '/',
     children: [
-      { index: true, Component: MainPage },
-      { path: '/favorites', Component: FavoritesPage },
-      { path: '/artwork/:id', Component: ArtworkPage },
+      { index: true, element: <MainPage /> },
+      { path: '/favorites', element: <FavoritesPage /> },
+      { path: '/artwork/:id', element: <ArtworkPage /> },
       {
         path: '*',
-        Component: NotFoundPage,
+        element: <NotFoundPage />,
       },
     ],
   },

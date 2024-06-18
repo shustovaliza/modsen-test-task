@@ -30,7 +30,7 @@ const extraArtworksIds: number[] = [
 const maxNumberOfPages = 100;
 const artworksPerPage = 3;
 
-export const MainPage = () => {
+const MainPage = () => {
   const [searchParameters, setSearchParameters] = useSearchParams();
 
   const { data: artworksResponse, status: getArtworksStatus } =
@@ -164,3 +164,5 @@ export const MainPage = () => {
     )
   );
 };
+
+export default MainPage;

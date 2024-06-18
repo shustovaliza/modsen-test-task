@@ -18,7 +18,7 @@ import {
   OverviewWrap,
 } from './styled';
 
-export const ArtworkPage = () => {
+const ArtworkPage = () => {
   const { id } = useParams<'id'>();
   const { data, status } = useGetArtworkQuery(id || '');
 
@@ -84,3 +84,5 @@ export const ArtworkPage = () => {
     )
   );
 };
+
+export default ArtworkPage;
