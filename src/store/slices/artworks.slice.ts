@@ -3,7 +3,11 @@ import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import { localStorageNames } from '@/constants/localStorage';
 import { Artwork } from '@/types/artwork';
 
-const getInitialState = (): { favoriteArtworks: Artwork['id'][] } => {
+type InitialState = {
+  favoriteArtworks: Artwork['id'][];
+};
+
+const getInitialState = (): InitialState => {
   const savedFavoriteArtworks = localStorage.getItem(
     localStorageNames.favoriteArtworks,
   );

@@ -1,12 +1,10 @@
 import { Link } from 'react-router-dom';
 
-import notFoundImage from '@/assets/pictures/notFoundImage.jpeg';
-import { artworksActions } from '@/store/slices/artworks.slice';
-import { useAppDispatch, useAppSelector } from '@/store/store.types';
-import { Artwork } from '@/types/artwork';
+import { useFavoriteArtworks } from '@/hooks/useFavoriteArtworks';
+import { getImageProps } from '@/utils/utils';
 
 import { AddToFavoritesButton } from '../AddToFavoritesButton';
-import { ArtworkCardAppearance } from './ArtworkCard.types';
+import { ArtworkCardAppearance, ArtworkCardProps } from './ArtworkCard.types';
 import {
   ArtworkCardWrap,
   ArtworkDescription,
@@ -15,45 +13,35 @@ import {
   TitleWrap,
 } from './styled';
 
-type ArtworkCardProps = {
-  appearance?: ArtworkCardAppearance;
-  artwork: Artwork;
-};
-
 export const ArtworkCard = ({
   appearance = ArtworkCardAppearance.big,
-  artwork,
+  artwork: { id, title, image_id, artist_title, artwork_type_title },
 }: ArtworkCardProps) => {
-  const isFavorite = useAppSelector((state) =>
-    state.artworks.favoriteArtworks.includes(artwork.id),
-  );
-  const dispatch = useAppDispatch();
+  const { isFavorite, addToFavorites } = useFavoriteArtworks(id);
+
   return (
     <ArtworkCardWrap $appearance={appearance}>
-      <ImageWrap $appearance={appearance} href={`/artwork/${artwork.id}`}>
+      <ImageWrap $appearance={appearance} href={`/artwork/${id}`}>
         <img
-          alt={`${artwork.title} picture`}
-          loading="lazy"
-          src={
-            artwork.image_id === null
-              ? notFoundImage
-              : `https://www.artic.edu/iiif/2/${artwork.image_id}/full/${appearance === ArtworkCardAppearance.big ? '387' : '200'},/0/default.jpg`
-          }
+          {...getImageProps({
+            image_id: image_id,
+            imageSize: appearance === ArtworkCardAppearance.big ? '387' : '200',
+            title: title,
+            loading: 'lazy',
+          })}
         ></img>
       </ImageWrap>
       <ArtworkDescription $appearance={appearance}>
         <TitleWrap>
           <div>
-            <Link to={`/artwork/${artwork.id}`}>{artwork.title}</Link>
-            <span>{artwork.artist_title}</span>
+            <Link to={`/artwork/${id}`}>{title}</Link>
+            <span>{artist_title}</span>
           </div>
-          <ArtworkType>{artwork.artwork_type_title}</ArtworkType>
+          <ArtworkType>{artwork_type_title}</ArtworkType>
         </TitleWrap>
         <AddToFavoritesButton
           isFavorite={isFavorite}
-          onClick={() => {
-            dispatch(artworksActions.addArtworkToFavorites(artwork.id));
-          }}
+          onClick={addToFavorites}
         />
       </ArtworkDescription>
     </ArtworkCardWrap>

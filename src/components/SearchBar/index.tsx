@@ -1,9 +1,10 @@
 import { useFormik } from 'formik';
-import * as Yup from 'yup';
+import { memo } from 'react';
 
 import ClearSearchIcon from '@/assets/icons/closeIcon.svg?react';
 import SearchIcon from '@/assets/icons/search.svg?react';
 
+import { validationSchema } from './searchBar.validation';
 import {
   SearchBarErrorMessage,
   SearchBarForm,
@@ -18,56 +19,53 @@ type SearchBarProps = {
   onReset: () => void;
 };
 
-export const SearchBar = ({
-  initialValue,
-  onSubmit,
-  onReset,
-}: SearchBarProps) => {
-  const formik = useFormik({
-    initialValues: {
-      search: initialValue,
-    },
-    validationSchema: Yup.object({
-      search: Yup.string()
-        .min(3, 'Must be 3 characters or more')
-        .max(50, 'Must be 50 characters or less'),
-    }),
-    onSubmit: onSubmit,
-    onReset: onReset,
-  });
+export const SearchBar = memo(
+  ({ initialValue, onSubmit, onReset }: SearchBarProps) => {
+    const { values, errors, handleChange, handleSubmit, resetForm } = useFormik(
+      {
+        initialValues: {
+          search: initialValue,
+        },
+        validationSchema: validationSchema,
+        onSubmit: onSubmit,
+        onReset: onReset,
+      },
+    );
 
-  return (
-    <SearchBarForm
-      onSubmit={formik.handleSubmit}
-      noValidate
-      aria-disabled={!formik.errors.search}
-    >
-      {formik.errors.search && (
-        <SearchBarErrorMessage>{formik.errors.search}</SearchBarErrorMessage>
-      )}
-      <SearchInputWrap>
-        <SearchInput
-          id="search"
-          name="search"
-          type="text"
-          placeholder="Search by title"
-          onChange={formik.handleChange}
-          value={formik.values.search}
-        />
-        <SearchButton
-          type="reset"
-          onClick={() =>
-            formik.resetForm({
-              values: {
-                search: '',
-              },
-            })
-          }
-          disabled={!formik.values.search}
-        >
-          {formik.values.search ? <ClearSearchIcon /> : <SearchIcon />}
-        </SearchButton>
-      </SearchInputWrap>
-    </SearchBarForm>
-  );
-};
+    const resetSearchForm = () =>
+      resetForm({
+        values: {
+          search: '',
+        },
+      });
+
+    return (
+      <SearchBarForm
+        onSubmit={handleSubmit}
+        noValidate
+        aria-disabled={!errors.search}
+      >
+        {errors.search && (
+          <SearchBarErrorMessage>{errors.search}</SearchBarErrorMessage>
+        )}
+        <SearchInputWrap>
+          <SearchInput
+            id="search"
+            name="search"
+            type="text"
+            placeholder="Search by title"
+            onChange={handleChange}
+            value={values.search}
+          />
+          <SearchButton
+            type="reset"
+            onClick={resetSearchForm}
+            disabled={!values.search}
+          >
+            {values.search ? <ClearSearchIcon /> : <SearchIcon />}
+          </SearchButton>
+        </SearchInputWrap>
+      </SearchBarForm>
+    );
+  },
+);

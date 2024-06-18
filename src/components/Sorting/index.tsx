@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 import { CheckboxContainer, SortingWrap } from './styled';
 
 type SortingProps = {
@@ -5,7 +7,7 @@ type SortingProps = {
   onChange: () => void;
 };
 
-export const Sorting = ({ isChecked, onChange }: SortingProps) => {
+export const Sorting = memo(({ isChecked, onChange }: SortingProps) => {
   return (
     <SortingWrap>
       <CheckboxContainer htmlFor="sortByUpdateDate">
@@ -20,4 +22,4 @@ export const Sorting = ({ isChecked, onChange }: SortingProps) => {
       </CheckboxContainer>
     </SortingWrap>
   );
-};
+});

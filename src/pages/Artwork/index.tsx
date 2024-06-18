@@ -1,14 +1,13 @@
 import { QueryStatus } from '@reduxjs/toolkit/query';
 import { useParams } from 'react-router-dom';
 
-import notFoundImage from '@/assets/pictures/notFoundImage.jpeg';
 import { AddToFavoritesButton } from '@/components/AddToFavoritesButton';
 import { AddToFavoritesButtonAppearance } from '@/components/AddToFavoritesButton/AddToFavoritesButton.types';
 import { FetchError } from '@/components/FetchError';
 import { Loader } from '@/components/Loader';
+import { useFavoriteArtworks } from '@/hooks/useFavoriteArtworks';
 import { useGetArtworkQuery } from '@/store/api/artworks/artworks.api';
-import { artworksActions } from '@/store/slices/artworks.slice';
-import { useAppDispatch, useAppSelector } from '@/store/store.types';
+import { getImageProps } from '@/utils/utils';
 
 import {
   ArtworkContentContainer,
@@ -23,10 +22,7 @@ export const ArtworkPage = () => {
   const { id } = useParams<'id'>();
   const { data, status } = useGetArtworkQuery(id || '');
 
-  const isFavorite = useAppSelector(
-    (state) => id && state.artworks.favoriteArtworks.includes(+id),
-  );
-  const dispatch = useAppDispatch();
+  const { isFavorite, addToFavorites } = useFavoriteArtworks(id ? +id : 0);
 
   if (status === QueryStatus.pending) {
     return <Loader />;
@@ -41,18 +37,15 @@ export const ArtworkPage = () => {
       <ArtworkPageContainer>
         <ImageWrap>
           <img
-            alt={`${data.title} picture`}
-            loading="lazy"
-            src={
-              data.image_id === null
-                ? notFoundImage
-                : `https://www.artic.edu/iiif/2/${data.image_id}/full/497,/0/default.jpg`
-            }
+            {...getImageProps({
+              image_id: data.image_id,
+              imageSize: '497',
+              title: data.title,
+              loading: 'lazy',
+            })}
           ></img>
           <AddToFavoritesButton
-            onClick={() =>
-              dispatch(artworksActions.addArtworkToFavorites(data.id))
-            }
+            onClick={addToFavorites}
             isFavorite={!!isFavorite}
             appearance={AddToFavoritesButtonAppearance.white}
           />

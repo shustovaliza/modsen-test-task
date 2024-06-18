@@ -1,3 +1,4 @@
+import { apiEndpoints } from '@/constants/api';
 import { Artwork } from '@/types/artwork';
 
 import { baseApi } from '..';
@@ -33,7 +34,7 @@ export const artworksApi = baseApi.injectEndpoints({
         }
 
         return {
-          url: `artworks/search`,
+          url: `${apiEndpoints.artworks}/search`,
           params: parameters,
         };
       },
@@ -53,7 +54,7 @@ export const artworksApi = baseApi.injectEndpoints({
           'id,title,image_id,artist_title,artwork_type_title',
         );
         return {
-          url: `artworks`,
+          url: `${apiEndpoints.artworks}`,
           params: parameters,
         };
       },
@@ -63,7 +64,7 @@ export const artworksApi = baseApi.injectEndpoints({
     }),
     getArtwork: build.query<Artwork, string>({
       query: (id) => ({
-        url: `artworks/${id}`,
+        url: `${apiEndpoints.artworks}/${id}`,
       }),
       transformResponse: (response: GetArtworkResponse) => {
         return response.data;

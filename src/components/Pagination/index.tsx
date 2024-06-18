@@ -1,7 +1,6 @@
-import { useMemo } from 'react';
-
 import LeftArrowIcon from '@/assets/icons/leftArrow.svg?react';
 import RightArrowIcon from '@/assets/icons/rightArrow.svg?react';
+import { usePagination } from '@/hooks/usePagination';
 
 import { ArrowsButton, PaginationButton, PaginationWrap } from './styled';
 
@@ -16,33 +15,10 @@ export const Pagination = ({
   currentPage,
   onPageChange,
 }: PaginationProps) => {
-  const arrayOfCurrentButtons = useMemo(() => {
-    let firstPage, lastPage;
-
-    if (totalNumberOfPages <= 5) {
-      firstPage = 1;
-      lastPage = totalNumberOfPages;
-    } else {
-      if (currentPage <= 3) {
-        firstPage = 1;
-        lastPage = 5;
-      } else if (currentPage + 3 >= totalNumberOfPages) {
-        firstPage = totalNumberOfPages - 4;
-        lastPage = totalNumberOfPages;
-      } else {
-        firstPage = currentPage - 2;
-        lastPage = currentPage + 2;
-      }
-    }
-
-    const resultArray = [];
-
-    for (let i = firstPage; i <= lastPage; i++) {
-      resultArray.push(i);
-    }
-
-    return resultArray;
-  }, [currentPage]);
+  const arrayOfCurrentButtons = usePagination({
+    totalNumberOfPages: totalNumberOfPages,
+    currentPage: currentPage,
+  });
 
   return (
     <PaginationWrap>
