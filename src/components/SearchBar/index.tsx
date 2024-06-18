@@ -1,8 +1,9 @@
 import { useFormik } from 'formik';
-import { memo } from 'react';
+import { ChangeEvent, memo } from 'react';
 
 import ClearSearchIcon from '@/assets/icons/closeIcon.svg?react';
 import SearchIcon from '@/assets/icons/search.svg?react';
+import { useDebounce } from '@/hooks/useDebounce';
 
 import { validationSchema } from './searchBar.validation';
 import {
@@ -21,16 +22,15 @@ type SearchBarProps = {
 
 export const SearchBar = memo(
   ({ initialValue, onSubmit, onReset }: SearchBarProps) => {
-    const { values, errors, handleChange, handleSubmit, resetForm } = useFormik(
-      {
-        initialValues: {
-          search: initialValue,
-        },
-        validationSchema: validationSchema,
-        onSubmit: onSubmit,
-        onReset: onReset,
+    const { values, errors, handleChange, resetForm, submitForm } = useFormik({
+      initialValues: {
+        search: initialValue,
       },
-    );
+      validationSchema: validationSchema,
+      onSubmit: onSubmit,
+      onReset: onReset,
+    });
+    const debounsedSubmit = useDebounce({ callback: submitForm, delay: 500 });
 
     const resetSearchForm = () =>
       resetForm({
@@ -39,9 +39,14 @@ export const SearchBar = memo(
         },
       });
 
+    const onChange = (event: ChangeEvent<HTMLInputElement>) => {
+      handleChange(event);
+      debounsedSubmit();
+    };
+
     return (
       <SearchBarForm
-        onSubmit={handleSubmit}
+        onSubmit={(e) => e.preventDefault()}
         noValidate
         aria-disabled={!errors.search}
       >
@@ -54,7 +59,7 @@ export const SearchBar = memo(
             name="search"
             type="text"
             placeholder="Search by title"
-            onChange={handleChange}
+            onChange={onChange}
             value={values.search}
           />
           <SearchButton
