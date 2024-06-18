@@ -3,7 +3,11 @@ import { ImgHTMLAttributes } from 'react';
 import notFoundImage from '@/assets/pictures/notFoundImage.jpeg';
 import { IMAGE_API_URL } from '@/constants/api';
 
-import { GetCurrentPageProps, GetImageProps } from './utils.types';
+import {
+  GetCurrentPageProps,
+  GetImageProps,
+  GetTotalNumberOfPagesProps,
+} from './utils.types';
 
 export const getCurrentPage = ({
   searchParameters,
@@ -30,4 +34,17 @@ export const getImageProps = ({
         : `${IMAGE_API_URL}${image_id}/full/${imageSize},/0/default.jpg`,
     alt: `${title} picture`,
   };
+};
+
+export const getTotalNumberOfPages = ({
+  totalNumberOfPages,
+  maxNumberOfPages,
+}: GetTotalNumberOfPagesProps) => {
+  if (totalNumberOfPages) {
+    return totalNumberOfPages >= maxNumberOfPages
+      ? maxNumberOfPages
+      : totalNumberOfPages;
+  } else {
+    return 1;
+  }
 };

@@ -8,3 +8,8 @@ export type GetImageProps = {
   imageSize: string;
   title: string;
 };
+
+export type GetTotalNumberOfPagesProps = {
+  totalNumberOfPages: number | undefined;
+  maxNumberOfPages: number;
+};

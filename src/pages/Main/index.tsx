@@ -14,8 +14,13 @@ import {
   useGetArtworksQuery,
 } from '@/store/api/artworks/artworks.api';
 import { H2Wrap, PageBlock } from '@/styles/sharedStyles';
-import { getCurrentPage } from '@/utils/utils';
+import { getCurrentPage, getTotalNumberOfPages } from '@/utils/utils';
 
+import {
+  artworksPerPage,
+  extraArtworksIds,
+  maxNumberOfPages,
+} from './mainPage.constants';
 import {
   ArtworksWrapExtra,
   BlocksWrap,
@@ -23,12 +28,6 @@ import {
   MainPageContainer,
   SearchAndSortingWrap,
 } from './styled';
-
-const extraArtworksIds: number[] = [
-  184379, 184378, 184377, 184376, 109819, 84241, 80548, 59426, 249208,
-];
-const maxNumberOfPages = 100;
-const artworksPerPage = 3;
 
 const MainPage = () => {
   const [searchParameters, setSearchParameters] = useSearchParams();
@@ -48,11 +47,10 @@ const MainPage = () => {
     totalPages: artworksResponse?.pagination.total_pages || 0,
   });
 
-  const totalNumberOfPages = artworksResponse
-    ? artworksResponse.pagination.total_pages >= maxNumberOfPages
-      ? maxNumberOfPages
-      : artworksResponse?.pagination.total_pages
-    : 0;
+  const totalNumberOfPages = getTotalNumberOfPages({
+    totalNumberOfPages: artworksResponse?.pagination.total_pages,
+    maxNumberOfPages: maxNumberOfPages,
+  });
 
   const onSearchFormSubmit = useCallback((values: { search: string }) => {
     setSearchParameters((old) => {
