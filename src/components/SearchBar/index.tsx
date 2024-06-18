@@ -30,7 +30,7 @@ export const SearchBar = memo(
       onSubmit: onSubmit,
       onReset: onReset,
     });
-    const debounsedSubmit = useDebounce({ callback: submitForm, delay: 500 });
+    const debouncedSubmit = useDebounce({ callback: submitForm, delay: 500 });
 
     const resetSearchForm = () =>
       resetForm({
@@ -41,7 +41,7 @@ export const SearchBar = memo(
 
     const onChange = (event: ChangeEvent<HTMLInputElement>) => {
       handleChange(event);
-      debounsedSubmit();
+      debouncedSubmit();
     };
 
     return (
