@@ -1,4 +1,4 @@
-import { Artwork } from '@/types/artwork';
+import { ArtworkShort } from '@/types/artwork';
 
 import { ArtworkCard } from '../ArtworkCard';
 import { ArtworkCardAppearance } from '../ArtworkCard/ArtworkCard.types';
@@ -6,7 +6,7 @@ import { EmptyList, FavoriteArtworksWrap } from './styled';
 
 type FavoriteArtworksListProps = {
   favoriteArtworksId: number[];
-  data: Artwork[];
+  data: ArtworkShort[];
 };
 
 export const FavoriteArtworksList = ({
