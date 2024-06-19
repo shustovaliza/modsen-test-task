@@ -36,3 +36,5 @@ export const artworksSlice = createSlice({
 });
 
 export const { actions: artworksActions } = artworksSlice;
+
+export default artworksSlice.reducer;
