@@ -126,3 +126,11 @@ export type Artwork = {
   updated_at: string;
   timestamp: string;
 };
+
+export type ArtworkShort = {
+  id: number;
+  title: string;
+  artwork_type_title: string;
+  artist_title: string;
+  image_id: string;
+};

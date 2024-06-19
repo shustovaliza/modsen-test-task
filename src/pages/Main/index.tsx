@@ -20,7 +20,7 @@ import {
   artworksPerPage,
   extraArtworksIds,
   maxNumberOfPages,
-} from './mainPage.constants';
+} from './Main.constants';
 import {
   ArtworksWrapExtra,
   BlocksWrap,

@@ -1,4 +1,4 @@
-import { Artwork } from '@/types/artwork';
+import { ArtworkShort } from '@/types/artwork';
 
 import { ArtworkCard } from '../ArtworkCard';
 import { Pagination } from '../Pagination';
@@ -9,7 +9,7 @@ import {
 } from './styled';
 
 type ArtworkCardsListProps = {
-  artworks: Artwork[];
+  artworks: ArtworkShort[];
   currentPage: number;
   totalNumberOfPages: number;
   onPageChange: (nextPage: number) => void;

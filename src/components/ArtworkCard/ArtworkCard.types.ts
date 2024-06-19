@@ -1,4 +1,4 @@
-import { Artwork } from '@/types/artwork';
+import { ArtworkShort } from '@/types/artwork';
 
 export enum ArtworkCardAppearance {
   big = 'big',
@@ -7,5 +7,5 @@ export enum ArtworkCardAppearance {
 
 export type ArtworkCardProps = {
   appearance?: ArtworkCardAppearance;
-  artwork: Artwork;
+  artwork: ArtworkShort;
 };

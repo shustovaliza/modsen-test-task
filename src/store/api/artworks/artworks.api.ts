@@ -1,5 +1,5 @@
 import { apiEndpoints } from '@/constants/api';
-import { Artwork } from '@/types/artwork';
+import { Artwork, ArtworkShort } from '@/types/artwork';
 
 import { baseApi } from '..';
 import {
@@ -45,7 +45,7 @@ export const artworksApi = baseApi.injectEndpoints({
         };
       },
     }),
-    getArtworksByIds: build.query<Artwork[], number[]>({
+    getArtworksByIds: build.query<ArtworkShort[], number[]>({
       query: (ids) => {
         const parameters = new URLSearchParams();
         parameters.append('ids', String(ids));

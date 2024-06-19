@@ -13,7 +13,7 @@ const config = {
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
   moduleNameMapper: {
-    '^.+\\.svg$': 'jest-transformer-svg',
+    '.+\\.svg?.+$': 'jest-transformer-svg',
     '^@/(.*)$': '<rootDir>/src/$1',
   },
 };

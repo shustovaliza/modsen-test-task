@@ -1,4 +1,4 @@
-import { Artwork } from '@/types/artwork';
+import { Artwork, ArtworkShort } from '@/types/artwork';
 
 export type GetArtworksResponse = {
   pagination: {
@@ -9,7 +9,7 @@ export type GetArtworksResponse = {
     current_page: number;
     next_url: string;
   };
-  data: Artwork[];
+  data: ArtworkShort[];
   info: {
     license_text: string;
     license_links: string[];
