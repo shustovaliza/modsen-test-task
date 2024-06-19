@@ -5,7 +5,7 @@ import { AddToFavoritesButton } from '@/components/AddToFavoritesButton';
 import { AddToFavoritesButtonAppearance } from '@/components/AddToFavoritesButton/AddToFavoritesButton.types';
 import { FetchError } from '@/components/FetchError';
 import { Loader } from '@/components/Loader';
-import { useFavoriteArtworks } from '@/hooks/useFavoriteArtworks';
+import { useFavoriteArtworks } from '@/hooks/useFavoriteArtworks/useFavoriteArtworks';
 import { useGetArtworkQuery } from '@/store/api/artworks/artworks.api';
 import { getImageProps } from '@/utils/utils';
 

@@ -3,7 +3,7 @@ import { ChangeEvent, memo } from 'react';
 
 import ClearSearchIcon from '@/assets/icons/closeIcon.svg?react';
 import SearchIcon from '@/assets/icons/search.svg?react';
-import { useDebounce } from '@/hooks/useDebounce';
+import { useDebounce } from '@/hooks/useDebounce/useDebounce';
 
 import { validationSchema } from './searchBar.validation';
 import {

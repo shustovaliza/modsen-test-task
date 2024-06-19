@@ -1,6 +1,6 @@
 import LeftArrowIcon from '@/assets/icons/leftArrow.svg?react';
 import RightArrowIcon from '@/assets/icons/rightArrow.svg?react';
-import { usePagination } from '@/hooks/usePagination';
+import { usePagination } from '@/hooks/usePagination/usePagination';
 
 import { ArrowsButton, PaginationButton, PaginationWrap } from './styled';
 

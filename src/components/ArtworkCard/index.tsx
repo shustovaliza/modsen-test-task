@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import { useFavoriteArtworks } from '@/hooks/useFavoriteArtworks';
+import { useFavoriteArtworks } from '@/hooks/useFavoriteArtworks/useFavoriteArtworks';
 import { getImageProps } from '@/utils/utils';
 
 import { AddToFavoritesButton } from '../AddToFavoritesButton';

@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom';
 import BurgerMenu from '@/assets/icons/burgerMenu.svg?react';
 import CloseBurgerMenu from '@/assets/icons/closeIcon.svg?react';
 import Logo from '@/assets/icons/logo.svg?react';
-import { useOutsideClick } from '@/hooks/useOutsideClick';
+import { useOutsideClick } from '@/hooks/useOutsideClick/useOutsideClick';
 
 import { Menu } from '../Menu';
 import {
